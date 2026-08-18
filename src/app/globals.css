@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/*
+ * MijnOliver-huisstijl.
+ *
+ * PLACEHOLDER: deze kleuren zijn overgenomen uit het bestaande "oliver bb"-logo
+ * (zwart #141414 + teal #12756a), als tussenstand tot het echte palet er is. Vervang alleen de waarden hieronder — de
+ * rest van de app gebruikt uitsluitend deze tokens (bg-merk, text-merk, ...),
+ * dus met deze zes regels wisselt de hele huisstijl.
+ */
+:root {
+  --merk-primair: #141414;
+  --merk-primair-licht: #3d3d3d;
+  --merk-accent: #12756a;
+  --merk-achtergrond: #fafafa;
+  --merk-vlak: #ffffff;
+  --merk-rand: #e4e4e7;
+  --merk-tekst: #141414;
+  --merk-tekst-zacht: #71717a;
+}
+
+@theme inline {
+  --color-merk: var(--merk-primair);
+  --color-merk-licht: var(--merk-primair-licht);
+  --color-merk-accent: var(--merk-accent);
+  --color-merk-achtergrond: var(--merk-achtergrond);
+  --color-merk-vlak: var(--merk-vlak);
+  --color-merk-rand: var(--merk-rand);
+  --color-merk-tekst: var(--merk-tekst);
+  --color-merk-zacht: var(--merk-tekst-zacht);
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background: var(--merk-achtergrond);
+  color: var(--merk-tekst);
+}
