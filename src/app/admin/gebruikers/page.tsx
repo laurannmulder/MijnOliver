@@ -3,6 +3,7 @@ import { Header } from '@/components/Header'
 import { Kaart, Knop, Melding, invoerClass, labelClass } from '@/components/ui'
 import { huidigeGebruiker } from '@/lib/gebruiker'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { serviceKeyAanwezig } from '@/lib/supabase/config'
 import { TOOLS, type ToolSlug } from '@/lib/tools'
 import { nodigUit, verwijderGebruiker, werkGebruikerBij } from './actions'
 import { VerwijderKnop } from './verwijder-knop'
@@ -53,6 +54,27 @@ export default async function GebruikersPagina({
   if (!gebruiker.isBeheerder) redirect('/')
 
   const { fout, melding } = await searchParams
+
+  // Zonder service-role key kan deze pagina geen gebruikers ophalen of
+  // uitnodigen; zeg dat, in plaats van te klappen in de Supabase-client.
+  if (!serviceKeyAanwezig) {
+    return (
+      <>
+        <Header email={gebruiker.email} isBeheerder={gebruiker.isBeheerder} />
+        <main className="mx-auto max-w-5xl px-6 py-12">
+          <h1 className="text-2xl font-semibold tracking-tight">Gebruikers</h1>
+          <div className="mt-6">
+            <Melding soort="fout">
+              <code>SUPABASE_SERVICE_ROLE_KEY</code> ontbreekt in de omgevingsvariabelen. Zet de
+              secret key (of service_role key) uit Supabase → Settings → API Keys in{' '}
+              <code>.env.local</code> en start de server opnieuw.
+            </Melding>
+          </div>
+        </main>
+      </>
+    )
+  }
+
   const rijen = await haalGebruikers()
 
   return (

@@ -6,3 +6,10 @@
 export const supabaseGeconfigureerd = Boolean(
   process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 )
+
+/**
+ * Alleen het gebruikersbeheer heeft de service-role key nodig. De rest van de
+ * app werkt zonder, dus dit wordt apart gecontroleerd op de plek die hem echt
+ * gebruikt in plaats van bij het opstarten.
+ */
+export const serviceKeyAanwezig = Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY)
