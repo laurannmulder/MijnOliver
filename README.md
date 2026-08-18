@@ -35,7 +35,11 @@ een instelscherm in plaats van een foutmelding.
 3. Zet in Supabase → Authentication → URL Configuration de Site URL en de
    redirect-URL's op de omgeving waar het portaal draait
    (`http://localhost:3200` lokaal, `https://mijnoliver.nl` in productie).
-4. Vul `.env.local` met de project-URL, de anon key en de service-role key.
+4. Vul `.env.local` met de project-URL en de twee keys uit Settings → API Keys.
+   Supabase is aan het overstappen van `anon`/`service_role` naar `sb_publishable_...`
+   en `sb_secret_...`; beide soorten werken (de legacy keys tot eind 2026). Nieuwe
+   stijl? Dan gaat de publishable key in `NEXT_PUBLIC_SUPABASE_ANON_KEY` en de
+   secret key in `SUPABASE_SERVICE_ROLE_KEY` — de variabelenamen blijven zoals ze zijn.
 5. Maak jezelf als eerste gebruiker aan (Authentication → Users → Add user, of via
    een uitnodiging) en zet daarna in de SQL Editor je eigen profiel op beheerder:
 

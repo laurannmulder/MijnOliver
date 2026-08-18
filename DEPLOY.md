@@ -31,18 +31,28 @@ opnieuw kunnen toeslaan:
 
 ## 3. DNS bij TransIP
 
-Vercel geeft per domein het exacte record. In de regel:
+**Neem de waarden over die Vercel zelf toont bij "Add domain".** Er is
+bewust geen tabel met vaste waarden in dit document, want:
+
+- de CNAME-waarde is **per project uniek** (iets in de vorm van
+  `d1d4fc829fe7bc7c.vercel-dns-017.com`) — de oude generieke
+  `cname.vercel-dns.com` is niet meer wat Vercel aanreikt;
+- het A-record voor het apex-domein is meestal `76.76.21.21`, maar Vercel toont
+  per domein de waarde die voor jouw project geldt.
+
+Dus per omgeving: eerst het domein in Vercel toevoegen, dan het record dat
+Vercel daar laat zien overnemen in het TransIP-DNS-scherm. Certificaten regelt
+Vercel automatisch zodra het record klopt; reken op enkele minuten tot een uur
+voor DNS-propagatie.
+
+Wat je in TransIP invult, is dus:
 
 | Naam | Type | Waarde |
 | --- | --- | --- |
-| `@` | A | `76.76.21.21` |
-| `www` | CNAME | `cname.vercel-dns.com.` |
-| `risk` | CNAME | `cname.vercel-dns.com.` |
-| `bb` | CNAME | `cname.vercel-dns.com.` |
-
-Neem de waarden over die Vercel zelf toont bij "Add domain" — die zijn leidend
-boven dit tabelletje. Certificaten regelt Vercel automatisch zodra het record
-klopt; reken op enkele minuten tot een uur voor DNS-propagatie.
+| `@` | A | wat Vercel toont bij het apex-domein |
+| `www` | CNAME | de projectspecifieke waarde van het portaalproject |
+| `risk` | CNAME | de projectspecifieke waarde van het risk-project |
+| `bb` | CNAME | de projectspecifieke waarde van het bb-project |
 
 ## 4. Environment variables in Vercel
 
