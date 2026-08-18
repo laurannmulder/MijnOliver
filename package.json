@@ -4,9 +4,9 @@
   "private": true,
   "description": "MijnOliver-portaal: centrale login voor de MijnOliver-tools (risk, bb).",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3200",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 3200",
     "lint": "eslint"
   },
   "dependencies": {
