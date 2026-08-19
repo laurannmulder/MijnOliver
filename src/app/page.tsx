@@ -40,8 +40,8 @@ export default async function PortaalPagina() {
                 className="group rounded-xl border border-merk-rand bg-merk-vlak p-6 transition-colors hover:border-merk-accent"
               >
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold">
-                    <span className="text-merk-accent">mijn</span>oliver {tool.naam}
+                  <h2 className="text-lg font-semibold tracking-tight">
+                    oliver <span className="font-normal text-merk-accent">{tool.naam.toLowerCase()}</span>
                   </h2>
                   <ArrowUpRight className="size-5 text-merk-zacht transition-colors group-hover:text-merk-accent" />
                 </div>
@@ -62,8 +62,8 @@ export default async function PortaalPagina() {
                 <Kaart key={tool.slug} className="opacity-60">
                   <div className="flex items-center gap-2">
                     <Lock className="size-4 text-merk-zacht" />
-                    <h3 className="font-medium">
-                      <span className="text-merk-accent">mijn</span>oliver {tool.naam}
+                    <h3 className="font-medium tracking-tight">
+                      oliver <span className="font-normal text-merk-accent">{tool.naam.toLowerCase()}</span>
                     </h3>
                   </div>
                   <p className="mt-2 text-sm text-merk-zacht">{tool.omschrijving}</p>

@@ -1,16 +1,8 @@
-<!-- PLACEHOLDER-woordmerk, in dezelfde stijl als het bestaande "oliver bb"-logo
-     uit het BeterBedrijfskundig-project. Vervang dit bestand door het echte
-     MijnOliver-logo (zelfde bestandsnaam, dan hoeft er geen code aangepast te
-     worden). Let op: dit is een los .svg in een <img>, dus kleuren staan hier
-     hard-coded en volgen niet de tokens uit globals.css. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60" role="img" aria-label="MijnOliver">
-  <title>MijnOliver</title>
-  <text x="8" y="42"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80" role="img" aria-label="Oliver">
+  <title>Oliver</title>
+  <text x="8" y="58"
         font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-        font-weight="400" font-size="32" letter-spacing="-1.4"
-        fill="#12756A">mijn</text>
-  <text x="72" y="42"
-        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-        font-weight="600" font-size="32" letter-spacing="-1.4"
+        font-weight="600" font-size="56" letter-spacing="-2.4"
         fill="#141414">oliver</text>
+  <circle cx="143" cy="51" r="6" fill="#12756A"/>
 </svg>
