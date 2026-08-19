@@ -31,28 +31,29 @@ opnieuw kunnen toeslaan:
 
 ## 3. DNS bij TransIP
 
-**Neem de waarden over die Vercel zelf toont bij "Add domain".** Er is
-bewust geen tabel met vaste waarden in dit document, want:
-
-- de CNAME-waarde is **per project uniek** (iets in de vorm van
-  `d1d4fc829fe7bc7c.vercel-dns-017.com`) — de oude generieke
-  `cname.vercel-dns.com` is niet meer wat Vercel aanreikt;
-- het A-record voor het apex-domein is meestal `76.76.21.21`, maar Vercel toont
-  per domein de waarde die voor jouw project geldt.
-
-Dus per omgeving: eerst het domein in Vercel toevoegen, dan het record dat
-Vercel daar laat zien overnemen in het TransIP-DNS-scherm. Certificaten regelt
-Vercel automatisch zodra het record klopt; reken op enkele minuten tot een uur
-voor DNS-propagatie.
-
-Wat je in TransIP invult, is dus:
+**Neem de waarden over die Vercel zelf toont bij het domein.** Wat er op
+2026-08-18 voor `mijnoliver.nl` uit kwam, en wat er misging:
 
 | Naam | Type | Waarde |
 | --- | --- | --- |
-| `@` | A | wat Vercel toont bij het apex-domein |
-| `www` | CNAME | de projectspecifieke waarde van het portaalproject |
-| `risk` | CNAME | de projectspecifieke waarde van het risk-project |
-| `bb` | CNAME | de projectspecifieke waarde van het bb-project |
+| `@` | A | `216.198.79.1` |
+| `www` | CNAME | `mijnoliver.nl.` |
+
+Let op deze vier dingen — alle vier kostten tijd:
+
+1. **Het A-record is `216.198.79.1`**, niet de `76.76.21.21` uit oudere
+   handleidingen. Die legacy waarde blijft werken, maar Vercel reikt de nieuwe aan.
+2. **Het AAAA-record moet je verwijderen.** TransIP zet er standaard een neer
+   (`2a01:7c8:3:1337::27`, hun parkeerserver). Vercel heeft geen IPv6 — noch
+   `vercel.com` noch een deployment heeft een AAAA-record — dus er is geen
+   vervangende waarde. Laat je hem staan, dan komen bezoekers met IPv6 op de
+   parkeerpagina en bezoekers met IPv4 op je site.
+3. **De schakelaar "TransIP-instellingen" moet uit.** Zolang die aan staat
+   beheert TransIP de records met hun eigen standaardset.
+4. **Het bestaande `@`-A-record wijzigen**, niet een tweede toevoegen.
+
+Certificaten regelt Vercel automatisch; in dit geval stond alles binnen enkele
+minuten op "Valid Configuration".
 
 ## 4. Environment variables in Vercel
 
