@@ -6,7 +6,7 @@
  * De URL's staan in env-variabelen zodat je lokaal naar een dev-server kunt
  * wijzen zonder de code te wijzigen.
  */
-export type ToolSlug = 'risk' | 'bb'
+export type ToolSlug = 'risk' | 'bb' | 'energy'
 
 export type Tool = {
   slug: ToolSlug
@@ -22,6 +22,13 @@ export const TOOLS: Tool[] = [
     omschrijving:
       'Bedrijfsschadeprofiel: brutowinst, kruiscontrole, uitkeringstermijn en onderverzekeringstoets.',
     url: process.env.NEXT_PUBLIC_URL_RISK ?? 'https://risk.mijnoliver.nl',
+  },
+  {
+    slug: 'energy',
+    naam: 'Energy',
+    omschrijving:
+      'Kantoren met een openstaande energielabelverplichting: zoeken op gebied, label en oppervlakte.',
+    url: process.env.NEXT_PUBLIC_URL_ENERGY ?? 'https://energy.mijnoliver.nl',
   },
   {
     slug: 'bb',
