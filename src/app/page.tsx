@@ -28,7 +28,9 @@ export default async function PortaalPagina() {
         <p className="mt-2 text-sm text-merk-zacht">
           {toegestaan.length > 0
             ? 'Kies de omgeving waar je naartoe wilt.'
-            : 'Je hebt nog geen toegang tot een omgeving. Vraag de beheerder om je toe te voegen.'}
+            : gebruiker.toegangOnbekend
+              ? 'Je toegang kon op dit moment niet worden opgehaald. Probeer het over een minuut opnieuw; blijft het zo, geef het dan door aan de beheerder.'
+              : 'Je hebt nog geen toegang tot een omgeving. Vraag de beheerder om je toe te voegen.'}
         </p>
 
         {toegestaan.length > 0 && (

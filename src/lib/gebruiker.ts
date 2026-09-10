@@ -7,6 +7,12 @@ export type Gebruiker = {
   naam: string | null
   isBeheerder: boolean
   tools: ToolSlug[]
+  /**
+   * Het opvragen van de toegang mislukte. Zonder dit onderscheid werd een
+   * mislukte opvraging een lege lijst, en kreeg de gebruiker te horen dat hij
+   * nergens toegang toe heeft — terwijl dat misschien helemaal niet zo is.
+   */
+  toegangOnbekend: boolean
 }
 
 /**
@@ -23,10 +29,16 @@ export async function huidigeGebruiker(): Promise<Gebruiker | null> {
 
   if (!user) return null
 
-  const [{ data: profiel }, { data: toegang }] = await Promise.all([
-    supabase.from('profielen').select('naam, is_beheerder').eq('id', user.id).maybeSingle(),
-    supabase.from('toegang').select('tool').eq('gebruiker_id', user.id),
-  ])
+  const [{ data: profiel, error: profielFout }, { data: toegang, error: toegangFout }] =
+    await Promise.all([
+      supabase.from('profielen').select('naam, is_beheerder').eq('id', user.id).maybeSingle(),
+      supabase.from('toegang').select('tool').eq('gebruiker_id', user.id),
+    ])
+
+  // Een mislukte opvraging hoort in de logs te staan, met de echte oorzaak.
+  // Op het scherm alleen een neutrale melding; de details zijn voor de beheerder.
+  if (profielFout !== null) console.error('Profiel ophalen mislukt:', profielFout.code, profielFout.message)
+  if (toegangFout !== null) console.error('Toegang ophalen mislukt:', toegangFout.code, toegangFout.message)
 
   return {
     id: user.id,
@@ -34,5 +46,6 @@ export async function huidigeGebruiker(): Promise<Gebruiker | null> {
     naam: profiel?.naam ?? null,
     isBeheerder: profiel?.is_beheerder ?? false,
     tools: (toegang ?? []).map((rij) => rij.tool as ToolSlug),
+    toegangOnbekend: toegangFout !== null,
   }
 }
