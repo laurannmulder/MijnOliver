@@ -1,4 +1,5 @@
 import { createClient } from './supabase/server'
+import { supabaseGeconfigureerd } from './supabase/config'
 import type { ToolSlug } from './tools'
 
 export type Gebruiker = {
@@ -48,4 +49,17 @@ export async function huidigeGebruiker(): Promise<Gebruiker | null> {
     tools: (toegang ?? []).map((rij) => rij.tool as ToolSlug),
     toegangOnbekend: toegangFout !== null,
   }
+}
+
+/**
+ * Alleen of er een sessie is, zonder profiel en toegangen op te halen. Voor de
+ * publieke pagina's, die daarmee alleen de knop rechtsboven kiezen.
+ */
+export async function isIngelogd(): Promise<boolean> {
+  if (!supabaseGeconfigureerd) return false
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  return user !== null
 }

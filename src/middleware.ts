@@ -8,8 +8,8 @@ import { supabaseGeconfigureerd } from '@/lib/supabase/config'
 // schone build). `middleware.ts` werkt in Next.js 16 gewoon, alleen met een
 // deprecation-notice.
 
-// De publieke website: `/` exact (anders matcht alles), plus de informatiepagina.
-const PUBLIEKE_PAGINAS = ['/', '/wat-we-doen']
+// De publieke website: `/` exact (anders matcht alles), plus de informatiepagina's.
+const PUBLIEKE_PAGINAS = ['/', '/wat-we-doen', '/sectoren']
 
 // Let op: /wachtwoord-vergeten hoort hier ook bij. Wie zijn wachtwoord kwijt is
 // heeft per definitie geen sessie, dus zonder deze regel stuurt de middleware
