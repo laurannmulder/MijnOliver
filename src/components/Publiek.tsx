@@ -4,34 +4,38 @@ import { ArrowRight, Mail } from 'lucide-react'
 import { Merk } from './Merk'
 import { KnopLink } from './ui'
 import { ContactFormulier } from './ContactFormulier'
+import { MobielMenu } from './MobielMenu'
 import { BEDRIJFSNAAM, DIENSTEN, SECTOREN, type Dienst, type Item } from '@/lib/site'
 
 /** Opmaak van de publieke pagina's: header, footer en de bouwstenen daartussen. */
 
 const NAVIGATIE = [
-  { href: '/wat-we-doen', label: 'Wat we doen', klasse: 'sm:inline' },
-  { href: '/sectoren', label: 'Sectoren', klasse: 'sm:inline' },
-  { href: '/wat-we-doen#werkwijze', label: 'Werkwijze', klasse: 'md:inline' },
-  { href: '/#contact', label: 'Contact', klasse: 'md:inline' },
+  { href: '/wat-we-doen', label: 'Wat we doen' },
+  { href: '/sectoren', label: 'Sectoren' },
+  { href: '/wat-we-doen#werkwijze', label: 'Werkwijze' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export function PubliekeHeader({ ingelogd = false }: { ingelogd?: boolean }) {
   return (
     <header className="sticky top-0 z-10 border-b border-merk-rand bg-merk-vlak/90 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center gap-6 px-6 py-4">
+      <div className="relative mx-auto flex max-w-7xl items-center gap-6 px-6 py-4">
         <Link href="/" className="shrink-0">
           <Merk />
         </Link>
-        <nav className="ml-auto flex items-center gap-x-7 text-sm">
+        <nav className="ml-auto hidden items-center gap-x-7 text-sm md:flex">
           {NAVIGATIE.map((item) => (
-            <Link key={item.href} href={item.href} className={`hidden text-merk-zacht hover:text-merk ${item.klasse}`}>
+            <Link key={item.href} href={item.href} className="text-merk-zacht hover:text-merk">
               {item.label}
             </Link>
           ))}
+        </nav>
+        <div className="ml-auto flex items-center gap-2 md:ml-0">
           <KnopLink href={ingelogd ? '/' : '/inloggen'} variant={ingelogd ? 'zacht' : 'primair'}>
             {ingelogd ? 'Mijn omgevingen' : 'Inloggen'}
           </KnopLink>
-        </nav>
+          <MobielMenu items={NAVIGATIE} />
+        </div>
       </div>
     </header>
   )
