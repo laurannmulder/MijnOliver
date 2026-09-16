@@ -7,9 +7,6 @@
 
 export const BEDRIJFSNAAM = 'Oliver Intelligence'
 
-// TODO: bevestigen dat dit adres bestaat en gelezen wordt.
-export const CONTACT_EMAIL = 'info@mijnoliver.nl'
-
 export type Werkterrein = {
   sleutel: string
   titel: string

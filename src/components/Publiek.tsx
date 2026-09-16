@@ -3,7 +3,8 @@ import type { ReactNode } from 'react'
 import { Building2, HeartPulse, Mail, Search, ShieldCheck, Zap, type LucideIcon } from 'lucide-react'
 import { Merk } from './Merk'
 import { KnopLink } from './ui'
-import { BEDRIJFSNAAM, CONTACT_EMAIL, type Werkterrein } from '@/lib/site'
+import { ContactFormulier } from './ContactFormulier'
+import { BEDRIJFSNAAM, type Werkterrein } from '@/lib/site'
 
 /** Opmaak van de publieke pagina's: header, footer en de bouwstenen daartussen. */
 
@@ -66,13 +67,14 @@ export function PubliekeFooter() {
         </div>
         <div className="text-sm">
           <h2 className="font-medium">Contact</h2>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="mt-3 inline-flex items-center gap-2 text-merk-zacht hover:text-merk"
+          <p className="mt-3 text-merk-zacht">Een vraag of kennismaken?</p>
+          <Link
+            href="/#contact"
+            className="mt-2 inline-flex items-center gap-2 font-medium text-merk-accent hover:underline"
           >
             <Mail className="size-4" aria-hidden />
-            {CONTACT_EMAIL}
-          </a>
+            Stuur ons een bericht
+          </Link>
         </div>
       </div>
       <div className="border-t border-merk-rand">
@@ -133,9 +135,9 @@ export function WerkterreinKaart({ terrein }: { terrein: Werkterrein }) {
 
 export function ContactBlok() {
   return (
-    <section id="contact" className="scroll-mt-20 bg-merk text-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 sm:py-24 md:flex-row md:items-center md:justify-between">
-        <div className="max-w-2xl">
+    <section id="contact" className="scroll-mt-20 bg-merk">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+        <div className="text-white">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Benieuwd wat we voor u kunnen doen?
           </h2>
@@ -144,13 +146,9 @@ export function ContactBlok() {
             helpen.
           </p>
         </div>
-        <a
-          href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Kennismaken met ${BEDRIJFSNAAM}`)}`}
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-6 py-3.5 font-medium text-merk transition-colors hover:bg-white/90"
-        >
-          <Mail className="size-5" aria-hidden />
-          Neem contact op
-        </a>
+        <div className="rounded-2xl bg-merk-vlak p-6 sm:p-8">
+          <ContactFormulier />
+        </div>
       </div>
     </section>
   )
