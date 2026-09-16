@@ -8,6 +8,8 @@ Na het inloggen zie je alleen de omgevingen waarvoor je toegang hebt.
 | Portaal | `mijnoliver.nl` | dit project |
 | Risk | `risk.mijnoliver.nl` | `~/Documents/bedrijfsschade-profiel` |
 | BB | `bb.mijnoliver.nl` | `~/Documents/BeterBedrijfskundig` |
+| Energy | `energy.mijnoliver.nl` | `~/Documents/OliverEnergy` |
+| VVE | `vve.mijnoliver.nl` | `~/Documents/olivervve` |
 
 ## Stack
 
