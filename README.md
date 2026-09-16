@@ -58,8 +58,8 @@ een instelscherm in plaats van een foutmelding.
 
 `/admin/gebruikers` (alleen zichtbaar voor beheerders): uitnodigen per e-mail,
 per gebruiker aanvinken welke omgevingen zij zien, beheerdersrecht geven en
-accounts verwijderen. Geen rij in `toegang` = geen toegang; de tegel is dan
-zichtbaar als "geen toegang" maar niet aanklikbaar.
+accounts verwijderen. Geen rij in `toegang` = geen toegang; de tegel
+van die omgeving is dan niet zichtbaar.
 
 De beheerderscontrole staat in de server actions zelf (`vereistBeheerder`), niet
 alleen in de UI: een server action is een gewoon endpoint dat elke ingelogde

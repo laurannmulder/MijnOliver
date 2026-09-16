@@ -1,6 +1,5 @@
-import { ArrowUpRight, Lock } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { Header } from '@/components/Header'
-import { Kaart } from '@/components/ui'
 import { Landingspagina } from '@/components/Landingspagina'
 import { huidigeGebruiker } from '@/lib/gebruiker'
 import { supabaseGeconfigureerd } from '@/lib/supabase/config'
@@ -16,7 +15,6 @@ export default async function PortaalPagina() {
   if (!gebruiker) return <Landingspagina />
 
   const toegestaan = TOOLS.filter((tool) => gebruiker.tools.includes(tool.slug))
-  const rest = TOOLS.filter((tool) => !gebruiker.tools.includes(tool.slug))
 
   return (
     <>
@@ -52,27 +50,6 @@ export default async function PortaalPagina() {
                 <p className="mt-4 text-xs text-merk-zacht/80">{new URL(tool.url).host}</p>
               </a>
             ))}
-          </div>
-        )}
-
-        {rest.length > 0 && (
-          <div className="mt-10">
-            <h2 className="text-xs font-medium uppercase tracking-wide text-merk-zacht">
-              Geen toegang
-            </h2>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              {rest.map((tool) => (
-                <Kaart key={tool.slug} className="opacity-60">
-                  <div className="flex items-center gap-2">
-                    <Lock className="size-4 text-merk-zacht" />
-                    <h3 className="font-medium tracking-tight">
-                      oliver <span className="font-normal text-merk-accent">{tool.naam.toLowerCase()}</span>
-                    </h3>
-                  </div>
-                  <p className="mt-2 text-sm text-merk-zacht">{tool.omschrijving}</p>
-                </Kaart>
-              ))}
-            </div>
           </div>
         )}
       </main>
