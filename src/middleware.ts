@@ -7,6 +7,10 @@ import { supabaseGeconfigureerd } from '@/lib/supabase/config'
 // niets (elk pad 404'de aan de edge zonder function-invocaties, ondanks een
 // schone build). `middleware.ts` werkt in Next.js 16 gewoon, alleen met een
 // deprecation-notice.
+
+// De publieke website: `/` exact (anders matcht alles), plus de informatiepagina.
+const PUBLIEKE_PAGINAS = ['/', '/wat-we-doen']
+
 // Let op: /wachtwoord-vergeten hoort hier ook bij. Wie zijn wachtwoord kwijt is
 // heeft per definitie geen sessie, dus zonder deze regel stuurt de middleware
 // diegene terug naar /inloggen en lijkt de link "niets te doen".
@@ -25,7 +29,9 @@ export async function middleware(request: NextRequest) {
   const { supabaseResponse, user } = await updateSession(request)
   const { pathname } = new URL(request.url)
 
-  const isPubliek = PUBLIEKE_PADEN.some((pad) => pathname.startsWith(pad))
+  const isPubliek =
+    PUBLIEKE_PAGINAS.includes(pathname) ||
+    PUBLIEKE_PADEN.some((pad) => pathname.startsWith(pad))
 
   if (!user && !isPubliek) {
     return NextResponse.redirect(new URL('/inloggen', request.url))

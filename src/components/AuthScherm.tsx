@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { Merk } from './Merk'
 import { Kaart } from './ui'
@@ -6,7 +7,9 @@ import { Kaart } from './ui'
 export function AuthScherm({ titel, children }: { titel: string; children: ReactNode }) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-8">
-      <Merk hoogte={36} />
+      <Link href="/" aria-label="Naar de website">
+        <Merk hoogte={36} />
+      </Link>
       <Kaart className="w-full max-w-sm">
         <h1 className="mb-4 text-lg font-semibold tracking-tight">{titel}</h1>
         {children}

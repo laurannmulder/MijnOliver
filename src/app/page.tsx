@@ -1,18 +1,19 @@
 import { ArrowUpRight, Lock } from 'lucide-react'
-import { redirect } from 'next/navigation'
 import { Header } from '@/components/Header'
 import { Kaart } from '@/components/ui'
-import { Instelscherm } from '@/components/Instelscherm'
+import { Landingspagina } from '@/components/Landingspagina'
 import { huidigeGebruiker } from '@/lib/gebruiker'
 import { supabaseGeconfigureerd } from '@/lib/supabase/config'
 import { TOOLS } from '@/lib/tools'
 
 export default async function PortaalPagina() {
-  if (!supabaseGeconfigureerd) return <Instelscherm />
+  // Bezoekers zonder sessie zien de publieke website; ingelogde gebruikers
+  // krijgen op hetzelfde adres hun omgevingen.
+  if (!supabaseGeconfigureerd) return <Landingspagina />
 
   const gebruiker = await huidigeGebruiker()
 
-  if (!gebruiker) redirect('/inloggen')
+  if (!gebruiker) return <Landingspagina />
 
   const toegestaan = TOOLS.filter((tool) => gebruiker.tools.includes(tool.slug))
   const rest = TOOLS.filter((tool) => !gebruiker.tools.includes(tool.slug))
