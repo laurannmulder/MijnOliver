@@ -106,7 +106,7 @@ export function Header() {
                     <ChevronDown className={`size-4 transition-transform duration-300 ${dienstenOpen ? 'rotate-180' : ''}`} aria-hidden />
                   </button>
                 </li>
-                {overig.map((m) => (
+                {overig.filter((m) => m.label !== 'Contact').map((m) => (
                   <li key={m.href}>
                     <Link href={m.href} aria-current={actief(m.href) ? 'page' : undefined} className={linkStijl(actief(m.href))}>
                       {m.label}
@@ -121,7 +121,7 @@ export function Header() {
                 href={`${BASIS}/contact`}
                 className="group hidden items-center gap-1.5 rounded-full bg-rood py-2.5 pl-5 pr-4 text-sm font-semibold text-white transition-colors hover:bg-rood-donker sm:inline-flex"
               >
-                Offerte aanvragen
+                Contact
                 <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
               </Link>
               <button
