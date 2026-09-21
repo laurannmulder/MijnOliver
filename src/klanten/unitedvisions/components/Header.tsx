@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, ChevronDown } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, House } from 'lucide-react'
 import { Logo } from './Logo'
 import { bedrijf, diensten } from '@/klanten/unitedvisions/lib/inhoud'
 import { BASIS } from '@/klanten/unitedvisions/lib/pad'
@@ -94,6 +94,16 @@ export function Header() {
 
             <nav aria-label="Hoofdmenu" className="hidden lg:block">
               <ul className="flex items-center gap-1">
+                <li>
+                  <Link
+                    href={BASIS}
+                    aria-label="Home"
+                    aria-current={actief(BASIS) ? 'page' : undefined}
+                    className={`grid size-9 place-items-center ${linkStijl(actief(BASIS))} !p-0`}
+                  >
+                    <House className="size-4" aria-hidden />
+                  </Link>
+                </li>
                 <li onPointerEnter={hoverAan} onPointerLeave={hoverUit}>
                   <button
                     type="button"
@@ -210,7 +220,7 @@ export function Header() {
                 </ul>
 
                 <ul className="mt-2 overflow-hidden rounded-2xl bg-white/[0.04]">
-                  {overig.map((m, i) => (
+                  {[{ href: BASIS, label: 'Home' }, ...overig].map((m, i) => (
                     <li
                       key={m.href}
                       className={`border-b border-white/5 transition-all duration-500 last:border-0 ${mobielOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'}`}
@@ -222,7 +232,10 @@ export function Header() {
                         aria-current={actief(m.href) ? 'page' : undefined}
                         className="flex items-center justify-between px-4 py-4 text-lg"
                       >
-                        <span className={actief(m.href) ? 'text-rood' : ''}>{m.label}</span>
+                        <span className={`flex items-center gap-3 ${actief(m.href) ? 'text-rood' : ''}`}>
+                          {m.label === 'Home' && <House className="size-5" aria-hidden />}
+                          {m.label}
+                        </span>
                         <ArrowUpRight className="size-4 text-white/40" aria-hidden />
                       </Link>
                     </li>
