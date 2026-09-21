@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
 import { Logo } from './Logo'
 import { bedrijf, diensten } from '@/klanten/unitedvisions/lib/inhoud'
 import { BASIS } from '@/klanten/unitedvisions/lib/pad'
@@ -46,8 +47,12 @@ export function Footer() {
       <div className="border-t border-rand">
         <p className="mx-auto max-w-7xl px-4 py-6 text-xs text-zacht sm:px-8">
           Website door{' '}
-          <a href="https://mijnoliver.nl" className="text-white/80 underline-offset-4 transition-colors hover:text-rood hover:underline">
+          <a
+            href="https://mijnoliver.nl"
+            className="inline-flex items-center gap-0.5 font-medium text-white underline decoration-white/40 underline-offset-4 transition-colors hover:text-rood hover:decoration-rood"
+          >
             Oliver Intelligence
+            <ArrowUpRight className="size-3" aria-hidden />
           </a>
         </p>
       </div>
