@@ -45,7 +45,10 @@ export function Footer() {
       </div>
       <div className="border-t border-rand">
         <p className="mx-auto max-w-7xl px-4 py-6 text-xs text-zacht sm:px-8">
-          © {new Date().getFullYear()} United Visions
+          Website door{' '}
+          <a href="https://mijnoliver.nl" className="text-white/80 underline-offset-4 transition-colors hover:text-rood hover:underline">
+            Oliver Intelligence
+          </a>
         </p>
       </div>
     </footer>
