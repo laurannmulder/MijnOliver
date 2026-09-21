@@ -11,7 +11,7 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-zacht">
-            Licht, geluid, beeld en livestreams. Al meer dan 30 jaar, vanuit {bedrijf.plaats}.
+            Licht, geluid, beeld en livestreams. Al meer dan 30 jaar.
           </p>
         </div>
         <div>
@@ -34,7 +34,6 @@ export function Footer() {
         <div>
           <h2 className="label text-zacht">Contact</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li>{bedrijf.plaats}</li>
             <li><a className="hover:text-rood" href={`tel:${bedrijf.telefoonLink}`}>{bedrijf.telefoon}</a></li>
             <li><a className="hover:text-rood" href={`mailto:${bedrijf.email}`}>{bedrijf.email}</a></li>
             <li className="flex gap-4 pt-2">

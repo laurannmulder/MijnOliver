@@ -18,11 +18,11 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   title: {
-    default: 'United Visions | Licht, geluid, beeld en livestreams in Groningen',
+    default: 'United Visions | Licht, geluid, beeld en livestreams',
     template: '%s | United Visions',
   },
   description:
-    'United Visions verzorgt al meer dan 30 jaar licht, geluid, beeld en LED-schermen voor evenementen, en livestreams, studio’s en podcasts vanuit Groningen.',
+    'United Visions verzorgt al meer dan 30 jaar licht, geluid, beeld en LED-schermen voor evenementen, en livestreams, studio’s en podcasts.',
   // Preview: niet in Google, anders concurreert hij met de echte site.
   robots: { index: false, follow: false },
 }

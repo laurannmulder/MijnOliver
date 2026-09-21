@@ -7,7 +7,7 @@ import kerkRegie from '@/klanten/unitedvisions/beeld/kerk-regie.jpg'
 
 export const metadata: Metadata = {
   title: 'Over ons',
-  description: 'Maak kennis met het team van United Visions uit Groningen.',
+  description: 'Maak kennis met het team van United Visions.',
 }
 
 export default function OverOnsPagina() {
@@ -26,7 +26,7 @@ export default function OverOnsPagina() {
         <div className="space-y-6 text-xl leading-relaxed text-white/85 sm:text-2xl">
           <p>
             Al meer dan 30 jaar verzorgen we LED, video, beeld, licht en geluid op evenementen. Daar kwamen livestreams,
-            eigen studio’s in hartje Groningen en professionele podcasts bij.
+            eigen studio’s en professionele podcasts bij.
           </p>
           <p className="text-zacht">
             Wat al die jaren hetzelfde bleef: we zoeken naar een presentatie die iets doet met mensen. Techniek is voor ons

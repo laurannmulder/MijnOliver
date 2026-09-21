@@ -32,7 +32,6 @@ import teamFrank from '@/klanten/unitedvisions/beeld/team-frank.jpg'
 
 export const bedrijf = {
   naam: 'United Visions',
-  plaats: 'Groningen',
   telefoon: '050 - 313 57 57',
   telefoonLink: '+31503135757',
   email: 'info@unitedvisions.nl',
@@ -161,10 +160,10 @@ export const diensten: Dienst[] = [
     slug: 'studio',
     nummer: '03',
     titel: "Studio's",
-    kort: 'Professionele studio’s in hartje Groningen. Binnenlopen, plaatsnemen en live gaan.',
+    kort: 'Professionele studio’s, volledig ingericht. Binnenlopen, plaatsnemen en live gaan.',
     kop: 'Uw eigen tv-studio, zonder gedoe.',
     intro: [
-      'Een online evenement organiseren en live gaan op YouTube, Vimeo, Facebook of een ander platform? Gebruik één van onze professionele studio’s in hartje Groningen.',
+      'Een online evenement organiseren en live gaan op YouTube, Vimeo, Facebook of een ander platform? Gebruik één van onze professionele studio’s.',
       'De studio’s zijn strak ingericht, zodat u direct kunt beginnen. Wij regelen de techniek en zorgen dat de stream soepel verloopt. Wilt u een andere setting, van zakelijk tot huiselijk? Dan richten we de studio in zoals u dat wilt.',
     ],
     video: 'studios.mp4',

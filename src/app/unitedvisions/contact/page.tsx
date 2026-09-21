@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Mail, MapPin, Phone, Radio } from 'lucide-react'
+import { Mail, Phone, Radio } from 'lucide-react'
 import { ContactFormulier } from '@/klanten/unitedvisions/components/ContactFormulier'
 import { bedrijf } from '@/klanten/unitedvisions/lib/inhoud'
 
 export const metadata: Metadata = {
   title: 'Contact en offerte',
-  description: 'Vraag een offerte aan of neem contact op met United Visions in Groningen.',
+  description: 'Vraag een offerte aan of neem contact op met United Visions.',
 }
 
 export default function ContactPagina() {
@@ -30,10 +30,6 @@ export default function ContactPagina() {
                 <span className="grid size-12 place-items-center rounded-full bg-inkt text-white transition-colors group-hover:bg-rood"><Mail className="size-5" aria-hidden /></span>
                 <span className="text-lg font-medium">{bedrijf.email}</span>
               </a>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid size-12 place-items-center rounded-full bg-inkt text-white"><MapPin className="size-5" aria-hidden /></span>
-              <span className="text-lg font-medium">{bedrijf.plaats}</span>
             </li>
             <li>
               <a href={bedrijf.livestreamPortaal} className="group flex items-center gap-4">

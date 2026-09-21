@@ -27,7 +27,7 @@ export default function Home() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-rood opacity-75" />
               <span className="relative inline-flex size-2.5 rounded-full bg-rood" />
             </span>
-            Live event solutions · {bedrijf.plaats}
+            Live event solutions
           </p>
           <h1 className="kop opkomen mt-6 text-[clamp(2.25rem,9.5vw,9rem)] [animation-delay:120ms]">
             Beleving is
