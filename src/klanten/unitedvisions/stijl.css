@@ -1,0 +1,95 @@
+/*
+ * Eigen Tailwind-build voor United Visions, los van de MijnOliver-huisstijl:
+ * source(none) + @source zorgt dat hier alleen de klassen uit de United
+ * Visions-bestanden in komen, met het eigen thema hieronder.
+ */
+@import "tailwindcss" source(none);
+@source "./";
+@source "../../app/unitedvisions";
+
+/*
+ * United Visions-huisstijl. Het rood komt uit het bestaande woordmerk (#e90101);
+ * de rest is een donker "podium"-palet waarin licht en beeld de show stelen.
+ */
+:root {
+  --uv-zwart: #09090a;
+  --uv-vlak: #131315;
+  --uv-vlak-2: #1b1b1e;
+  --uv-rand: rgb(255 255 255 / 0.1);
+  --uv-tekst: #f3f1ec;
+  --uv-zacht: #a3a3a8;
+  --uv-rood: #e5141c;
+  --uv-rood-donker: #b80d14;
+  --uv-papier: #f3f1ec;
+  --uv-inkt: #111113;
+}
+
+@theme inline {
+  --color-zwart: var(--uv-zwart);
+  --color-vlak: var(--uv-vlak);
+  --color-vlak-2: var(--uv-vlak-2);
+  --color-rand: var(--uv-rand);
+  --color-tekst: var(--uv-tekst);
+  --color-zacht: var(--uv-zacht);
+  --color-rood: var(--uv-rood);
+  --color-rood-donker: var(--uv-rood-donker);
+  --color-papier: var(--uv-papier);
+  --color-inkt: var(--uv-inkt);
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Het portaal heeft een lichte body; op deze pagina's donker, ook bij overscroll. */
+body:has(.uv-site) {
+  background: var(--uv-zwart);
+  color: var(--uv-tekst);
+}
+
+::selection {
+  background: var(--uv-rood);
+  color: #fff;
+}
+
+/* In een layer, zodat Tailwind-utilities (normal-case, text-*) winnen. */
+@layer components {
+  /* Brede, uitgerekte koppen: het gevoel van podiumbelettering. */
+  .kop {
+    font-stretch: 125%;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .label {
+    font-stretch: 112%;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes looptekst {
+  to { transform: translateX(-50%); }
+}
+.looptekst {
+  animation: looptekst 40s linear infinite;
+}
+
+@keyframes opkomen {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+.opkomen {
+  animation: opkomen 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .looptekst, .opkomen { animation: none; }
+}

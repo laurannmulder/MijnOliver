@@ -11,6 +11,22 @@ Na het inloggen zie je alleen de omgevingen waarvoor je toegang hebt.
 | Energy | `energy.mijnoliver.nl` | `~/Documents/OliverEnergy` |
 | VVE | `vve.mijnoliver.nl` | `~/Documents/olivervve` |
 
+## Klantpreviews
+
+Publieke websites voor klanten, tijdelijk onder mijnoliver.nl tot hun eigen
+domein klaarstaat. Geen login (zie `KLANTSITES` in `src/middleware.ts`), eigen
+huisstijl en `noindex`.
+
+| Klant | Pad | Code |
+| --- | --- | --- |
+| United Visions | `/unitedvisions` | `src/app/unitedvisions`, `src/klanten/unitedvisions`, `public/unitedvisions` |
+
+United Visions: teksten en foto's in `src/klanten/unitedvisions/lib/inhoud.ts`.
+Formulierberichten gaan naar `UNITEDVISIONS_CONTACT_ONTVANGER` (standaard
+Laura-Ann), via dezelfde `RESEND_API_KEY` als het portaal. Voor de verhuizing
+naar unitedvisions.nl: zie `~/Documents/unitedvisions/README.md` (DNS-records
+en stappen).
+
 ## Stack
 
 Next.js 16 (App Router, `src/`), React 19, Tailwind 4, Supabase (auth + database).

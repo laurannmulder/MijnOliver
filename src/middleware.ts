@@ -21,7 +21,14 @@ const PUBLIEKE_PADEN = [
   '/wachtwoord-vergeten',
 ]
 
+// Klantsites (src/app/unitedvisions e.d.): publiek, en ze hebben niets aan een
+// Supabase-sessie, dus meteen door zonder inlogcontrole.
+const KLANTSITES = ['/unitedvisions']
+
 export async function middleware(request: NextRequest) {
+  const pad = request.nextUrl.pathname
+  if (KLANTSITES.some((k) => pad === k || pad.startsWith(`${k}/`))) return NextResponse.next()
+
   // Zonder config zou elke request klappen op een ongeldige Supabase-URL;
   // de pagina's tonen dan zelf een instelscherm.
   if (!supabaseGeconfigureerd) return NextResponse.next()
