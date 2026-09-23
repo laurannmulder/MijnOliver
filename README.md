@@ -21,7 +21,13 @@ huisstijl en `noindex`.
 | --- | --- | --- |
 | United Visions | `/unitedvisions` | `src/app/unitedvisions`, `src/klanten/unitedvisions`, `public/unitedvisions` |
 
-United Visions: teksten en foto's in `src/klanten/unitedvisions/lib/inhoud.ts`.
+United Visions: teksten in `src/klanten/unitedvisions/lib/inhoud.ts`. De foto's
+bij producties beheert de eigenaar zelf op `/unitedvisions/beheer` (alleen voor
+beheerders): ze staan in de Supabase-bucket `unitedvisions`, met de volgorde en
+bijschriften in `producties.json` in diezelfde bucket. Bewust nog zonder tabel,
+zodat deze opzet geen migratie nodig had; bevalt het, dan verhuist die index
+naar een echte tabel en verandert alleen `lib/opslag.ts` mee. Staat er niets in
+de opslag, dan tonen de pagina's de meegeleverde foto's uit `inhoud.ts`.
 Formulierberichten gaan naar `UNITEDVISIONS_CONTACT_ONTVANGER` (standaard
 Laura-Ann), via dezelfde `RESEND_API_KEY` als het portaal. Voor de verhuizing
 naar unitedvisions.nl: zie `~/Documents/unitedvisions/README.md` (DNS-records

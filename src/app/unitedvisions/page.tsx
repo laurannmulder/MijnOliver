@@ -5,11 +5,14 @@ import { VideoAchtergrond } from '@/klanten/unitedvisions/components/VideoAchter
 import { Looptekst } from '@/klanten/unitedvisions/components/Looptekst'
 import { Knop } from '@/klanten/unitedvisions/components/Knop'
 import { CtaBand } from '@/klanten/unitedvisions/components/CtaBand'
-import { diensten, producties, werkwijze, bedrijf } from '@/klanten/unitedvisions/lib/inhoud'
+import { diensten, werkwijze } from '@/klanten/unitedvisions/lib/inhoud'
+import { haalGetoondeProducties } from '@/klanten/unitedvisions/lib/producties'
 import podiumWidescreen from '@/klanten/unitedvisions/beeld/podium-widescreen.jpg'
 import { BASIS } from '@/klanten/unitedvisions/lib/pad'
 
-export default function Home() {
+export default async function Home() {
+  const producties = await haalGetoondeProducties()
+
   return (
     <>
       {/* Hero */}
@@ -145,12 +148,15 @@ export default function Home() {
         </div>
         <div className="mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:px-8 lg:px-[max(2rem,calc((100vw-80rem)/2+2rem))]">
           {producties.slice(0, 8).map((p) => (
-            <figure key={p.titel} className="group relative w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[26rem]">
+            <figure key={p.id} className="group relative w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[26rem]">
               <Image
-                src={p.beeld}
+                src={p.src}
                 alt={p.titel}
+                width={p.breedte}
+                height={p.hoogte}
+                placeholder={p.blur ? 'blur' : 'empty'}
+                blurDataURL={p.blur}
                 sizes="(min-width: 640px) 26rem, 78vw"
-                placeholder="blur"
                 className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-zwart/90 to-transparent p-6 pt-16">

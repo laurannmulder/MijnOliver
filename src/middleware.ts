@@ -27,7 +27,9 @@ const KLANTSITES = ['/unitedvisions']
 
 export async function middleware(request: NextRequest) {
   const pad = request.nextUrl.pathname
-  if (KLANTSITES.some((k) => pad === k || pad.startsWith(`${k}/`))) return NextResponse.next()
+  // ... behalve hun beheerpagina's: daar hoort de gewone inlogcontrole bij.
+  const isKlantsite = KLANTSITES.some((k) => pad === k || pad.startsWith(`${k}/`))
+  if (isKlantsite && !pad.includes('/beheer')) return NextResponse.next()
 
   // Zonder config zou elke request klappen op een ongeldige Supabase-URL;
   // de pagina's tonen dan zelf een instelscherm.

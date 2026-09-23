@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { PaginaKop } from '@/klanten/unitedvisions/components/PaginaKop'
 import { CtaBand } from '@/klanten/unitedvisions/components/CtaBand'
-import { producties } from '@/klanten/unitedvisions/lib/inhoud'
+import { haalGetoondeProducties } from '@/klanten/unitedvisions/lib/producties'
 import eventproductions from '@/klanten/unitedvisions/beeld/eventproductions.jpg'
 
 export const metadata: Metadata = {
@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   description: 'Een selectie van evenementen, livestreams en studioproducties van United Visions.',
 }
 
-export default function ProductiesPagina() {
+export default async function ProductiesPagina() {
+  const producties = await haalGetoondeProducties()
+
   return (
     <>
       <PaginaKop
@@ -23,11 +25,14 @@ export default function ProductiesPagina() {
       <section className="mx-auto max-w-7xl px-4 py-24 sm:px-8">
         <ul className="columns-1 gap-4 sm:columns-2 lg:columns-3">
           {producties.map((p) => (
-            <li key={p.titel} className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl">
+            <li key={p.id} className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl">
               <Image
-                src={p.beeld}
+                src={p.src}
                 alt={p.titel}
-                placeholder="blur"
+                width={p.breedte}
+                height={p.hoogte}
+                placeholder={p.blur ? 'blur' : 'empty'}
+                blurDataURL={p.blur}
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="w-full transition-transform duration-700 group-hover:scale-105"
               />
